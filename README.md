@@ -61,9 +61,23 @@ pip install flask
 
 8. 引入`.env`环境变量
 
-   
+   ```
+   pip install dotenv
+   ```
 
 9. 实现表单的验证并关闭csrf
 
-10. 
+10. 统一响应数据格式
+
+11. 异常与错误的统一
+
+12. pyTest测试
+
+13. Flask-SQLAlchemy
+
+14. 应用ORM模型的创建与增删改查
+
+15. 重写SQLAlchemy核心类实现自动提交
+
+16.  Flask-Migrate扩展使用
 

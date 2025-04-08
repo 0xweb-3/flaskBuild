@@ -65,7 +65,7 @@ pip install flask
    pip install dotenv
    ```
 
-9. 实现表单的验证并关闭csrf
+9. ✅实现表单的验证，并关闭csrf
 
 10. 统一响应数据格式
 

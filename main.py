@@ -3,6 +3,7 @@ import os
 import dotenv
 from injector import Injector
 
+from config.config import Config
 from internal.router import Router
 from internal.server import Http
 
@@ -13,7 +14,7 @@ def main():
 
     injector = Injector()
 
-    app = Http(__name__, router=injector.get(Router))
+    app = Http(__name__,conf=Config(), router=injector.get(Router))
     app.run(port=os.getenv("PORT"))
 
 

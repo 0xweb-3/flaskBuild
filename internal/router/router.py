@@ -1,8 +1,9 @@
 from flask import Flask, Blueprint
+from injector import inject
 
 from internal.handler import AppHandler
 
-
+@inject
 class Router:
     """路由"""
 

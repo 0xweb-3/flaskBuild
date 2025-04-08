@@ -41,7 +41,11 @@ pip install flask
 
 2. 构建简单的应用控制器
 
-3. 引入路由控制
+3. 引入路由控制，蓝图
+3. Flask服务引擎构建
+3. flask服务可启动
 
-4. 并使用依赖注入
+4. 使用injector管理依赖注入
+5. 使用dataclasses简化路由对象`__init__`
+6. 
 

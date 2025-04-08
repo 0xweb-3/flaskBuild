@@ -59,7 +59,7 @@ pip install flask
    pip install dataclasses
    ```
 
-8. 引入`.env`环境变量
+8. ✅引入`.env`环境变量
 
    ```
    pip install dotenv

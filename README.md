@@ -33,27 +33,37 @@ pipreqs --ignore myenv --force
 
 ## 构建步骤
 
-1. 安装flask
+1. ✅安装flask
 
 ```
 pip install flask
 ```
 
-2. 构建简单的应用控制器
+2. ✅构建简单的应用控制器
 
-3. 引入路由控制，蓝图
+3. ✅引入路由控制，蓝图
 
-4. Flask服务引擎构建
+4. ✅Flask服务引擎构建
 
-5. flask服务可启动
+5. ✅flask服务可启动
 
-6. 使用injector管理依赖注入
+6. ✅使用injector管理依赖注入
 
    ```
    pip install injector
    ```
 
-7. 使用dataclasses简化路由对象`__init__`
+7. ✅使用dataclasses简化路由对象`__init__`
 
-8. 
+   ```
+   pip install dataclasses
+   ```
+
+8. 引入`.env`环境变量
+
+   
+
+9. 实现表单的验证并关闭csrf
+
+10. 
 

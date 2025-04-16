@@ -1,6 +1,7 @@
 from flask import request
 
 from internal.schema.user_schema import LoginRequest
+from pkg.exception.exception import NotFoundException
 from pkg.response.response import validate_error_json, success_json
 
 
@@ -11,6 +12,8 @@ class AppHandler:
         return {"data": "pong"}
 
     def login(self):
+        # 1/0
+        raise NotFoundException()
         req = LoginRequest()
         if not req.validate():
             return validate_error_json(req.errors)

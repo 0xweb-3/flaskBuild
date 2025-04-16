@@ -12,8 +12,6 @@ class AppHandler:
         return {"data": "pong"}
 
     def login(self):
-        # 1/0
-        raise NotFoundException()
         req = LoginRequest()
         if not req.validate():
             return validate_error_json(req.errors)

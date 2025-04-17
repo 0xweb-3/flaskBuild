@@ -77,9 +77,9 @@ pip install flask
 
 14. ✅应用ORM模型的创建与增删改查
 
-15. 重写SQLAlchemy核心类实现自动提交
+15. ✅重写SQLAlchemy核心类实现自动提交
 
-16.  Flask-Migrate扩展使用
+16.  ✅Flask-Migrate扩展使用
 
 
 

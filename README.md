@@ -108,3 +108,64 @@ pip install flask
  pytest -v
 ```
 
+## Flask-Migrate 
+
+```shell
+pip install flask-migrate
+```
+
+### 常见指令
+
+1. 初始化迁移环境
+
+   在开始迁移数据之前,需要先使用init命令初始化创建一个迁移环境:
+
+   ```bash
+   #当flask 的应用入口在项目根目录,且文件名为 app.py,并且实例变量名为app时 
+   flask --app main.py db init
+   ```
+
+   运行好命令后，就会在 directory 指定的位置创建一个迁移环境，默认位置为 ./migrations。
+
+2. 生成迁移脚本
+
+   使用如下命令自动生成迁移脚本:
+
+   ```bash
+   flask --app main.py db migrate -m "create_table"
+   ```
+
+   在生成的迁移脚本中有两个函数：
+
+   - upgrade()：把迁移中的改动应用到数据库中；
+   - downgrade（）：将改动撤销；
+
+   注意下，在生产环境中一般不使用 Flask-Migrate 迁移，一般人工生成相应的 SQL 执行迁移，如果要使用迁移，一定要仔细检查生成的迁移文件是否符合预期,确认后才可以使用。
+
+3. 更新及回滚数据库
+
+   生成迁移脚本后，可以使用 upgrade 命令来更新数据库，如下：
+
+   ```bash
+   flask --app app.server.app db upgrade
+   ```
+
+   每一次更新ORM模型,都需要执行migrate命令生成迁移文件,然后才可以使用upgrade命令将更新同步到数据库中。
+
+   如果想要回滚数据库，可以使用 downgrade 命令，如下：
+
+   ```bash
+   flask --app app.server.app db downgrade
+   ```
+
+   每执行一次命令会向上回滚一个版本，如果想一次性回滚到最原始的版本，即删除所有数据库，可以使用如下命令：
+
+   ```bash
+   flask --app app.server.app db downgrade base
+   ```
+
+   如果想回滚到特定的版本，可以在 downgrade 后带上特定的版本号，如下：
+
+   ```bash
+   flask --app app.server.app db downgrade 版本号
+   ```

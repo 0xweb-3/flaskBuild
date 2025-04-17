@@ -1,6 +1,8 @@
 import os
 
 from flask import Flask
+from flask_migrate import Migrate
+
 from pkg.sqlalchemy import SQLAlchemy
 
 from config.config import Config
@@ -14,7 +16,12 @@ from pkg.response.response import json, Response
 class Http(Flask):
     """Http服务引擎"""
 
-    def __init__(self, *args, conf: Config, db: SQLAlchemy, router: Router, **kwargs):
+    def __init__(self, *args,
+                 conf: Config,
+                 db: SQLAlchemy,
+                 migrate: Migrate,
+                 router: Router,
+                 **kwargs):
         super().__init__(*args, **kwargs)
         # 通过类的方式将应用配置加载
         self.config.from_object(conf)
@@ -23,7 +30,8 @@ class Http(Flask):
 
         # 初始化SQLAlchemy扩展
         db.init_app(self)
-
+        # Migrate
+        migrate.init_app(self, db, directory="internal/migration")
         # 创建数据库表
         with self.app_context():
             _ = User()  # 确保项目代码一定能检索到app模型

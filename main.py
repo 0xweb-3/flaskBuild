@@ -1,6 +1,9 @@
 import os
 
 import dotenv
+from flask_migrate import Migrate
+
+from internal.extension.migrate_extension import migrate
 from pkg.sqlalchemy import SQLAlchemy
 from injector import Injector, Module, Binder
 
@@ -15,8 +18,10 @@ dotenv.load_dotenv()
 
 class ExtensionModule(Module):
     """扩展模块的依赖注入"""
+
     def configure(self, binder: Binder) -> None:
         binder.bind(SQLAlchemy, to=db)
+        binder.bind(Migrate, to=migrate)
 
 
 def create_app():
@@ -26,6 +31,7 @@ def create_app():
     app = Http(__name__,
                conf=Config(),
                db=injector.get(SQLAlchemy),
+               migrate=injector.get(Migrate),
                router=injector.get(Router)
                )
     return app

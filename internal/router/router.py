@@ -3,14 +3,14 @@ from dataclasses import dataclass
 from flask import Flask, Blueprint
 from injector import inject
 
-from internal.handler import AppHandler
+from internal.handler import UserHandler
 
 
 @inject
 @dataclass
 class Router:
     """路由"""
-    app_handler: AppHandler
+    app_handler: UserHandler
 
     # def __init__(self, app_handler: AppHandler):
     #     self.app_handler = app_handler

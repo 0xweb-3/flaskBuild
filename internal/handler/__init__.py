@@ -1,3 +1,3 @@
-from .app_handler import AppHandler
+from .user_handler import UserHandler
 
-__all__ = ['AppHandler']
+__all__ = ['UserHandler']

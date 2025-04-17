@@ -1,20 +1,33 @@
 import os
 
 import dotenv
-from injector import Injector
+from flask_sqlalchemy import SQLAlchemy
+from injector import Injector, Module, Binder
 
 from config.config import Config
+from internal.extension.database_extension import db
 from internal.router import Router
 from internal.server import Http
 
+# 将env加载到环境变量中
+dotenv.load_dotenv()
+
+
+class ExtensionModule(Module):
+    """扩展模块的依赖注入"""
+    def configure(self, binder: Binder) -> None:
+        binder.bind(SQLAlchemy, to=db)
+
 
 def create_app():
-    # 将env加载到环境变量中
-    dotenv.load_dotenv()
+    # injector = Injector()
+    injector = Injector([ExtensionModule])
 
-    injector = Injector()
-
-    app = Http(__name__, conf=Config(), router=injector.get(Router))
+    app = Http(__name__,
+               conf=Config(),
+               db=injector.get(SQLAlchemy),
+               router=injector.get(Router)
+               )
     return app
 
 

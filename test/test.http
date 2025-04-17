@@ -10,3 +10,14 @@ Accept: application/json
   "email": "admin@qq.com",
   "password": "123456"
 }
+
+### POST login API
+POST http://127.0.0.1:5001/v1/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "admin@qq.com",
+  "name": "xin",
+  "password": "123456"
+}
